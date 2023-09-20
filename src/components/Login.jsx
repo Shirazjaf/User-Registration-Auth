@@ -8,35 +8,37 @@ const Login = () => {
     password: "",
   });
 
+  //login starts here
+
   const handleSubmit = (e) => {
+    // Prevent default login behavior
+
     e.preventDefault();
+
     const loggeduser = JSON.parse(localStorage.getItem("user")) || [];
 
-    // checks data in local using hod function and returns boolean values
+    // Check if the user entered "admin" as both email and password
 
-    const userMatch = loggeduser.find(
-      (user) => user.email === input.email && user.password === input.password
-    );
-
-    //this condition works based on above boolean and returns
-
-    if (userMatch) {
+    if (input.email === "admin@gmail.com" && input.password === "admin") {
       localStorage.setItem("loggedin", true);
-      navigate("/Home");
-    } else {
-      alert("Wrong Email or Password");
-    }
 
-    // if (
-    //   input.email === loggeduser.email &&
-    //   input.password === loggeduser.password
-    // ) {
-    //   localStorage.setItem("loggedin", true);
-    //   navigate("/Home");
-    // } else {
-    //   alert("Wrong Email or Password");
-    //   console.log(loggeduser);
-    // }
+      navigate("/Admin"); // navigate to the Admin page
+    } else {
+      // Check if there is a matching user in the local storage
+
+      const userMatch = loggeduser.find(
+        (user) => user.email === input.email && user.password === input.password
+      );
+
+      //executes condition based on above HOD boolean
+
+      if (userMatch) {
+        localStorage.setItem("loggedin", true);
+        navigate("/Home"); // navigate to the Home page
+      } else {
+        alert("Wrong Email or Password");
+      }
+    }
   };
 
   return (
@@ -48,7 +50,7 @@ const Login = () => {
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb05">
-                    Create an account
+                    LOGIN USER
                   </h2>
 
                   <form onSubmit={handleSubmit}>

@@ -9,7 +9,7 @@ const Home = () => {
   const handleLogout = () => {
     localStorage.removeItem("loggedin");
 
-    navigate("/Login");
+    navigate("/");
   };
 
   return (

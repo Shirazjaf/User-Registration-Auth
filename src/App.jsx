@@ -8,13 +8,14 @@ import {
 import Home from "./pages/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Admin from "./pages/Admin";
 
 function App() {
   // Router Configuration
 
   const router = createBrowserRouter([
     {
-      path: "/login",
+      path: "/",
       element: <Login />,
     },
     {
@@ -24,6 +25,10 @@ function App() {
     {
       path: "/home",
       element: <Home />,
+    },
+    {
+      path: "/admin",
+      element: <Admin />,
     },
   ]);
 
@@ -38,12 +43,9 @@ function App() {
             <li>
               <Link to="/register">Register</Link>
             </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
           </ul>
         </nav>
-        {/* Place the route outlet for rendering route components */}
+        {}
         {router.route}
       </div>
     </RouterProvider>
