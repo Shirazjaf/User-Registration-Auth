@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   // store data in userData and map in code
-  const userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user")) || [];
   console.log(userData);
 
   //handle logout
